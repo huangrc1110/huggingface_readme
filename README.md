@@ -1,7 +1,7 @@
-# Le-Tong(LeT): A Real-World Dataset for Multi-Task Robot Learning
+# Le-Tong(LeT): A Real World Dataset for Multi-Task Robot Learning
 
 ## Overview
-We introduce <strong>Le-Tong(LeT)</strong>, a <strong>real-world dataset</strong> with <strong>multi-task, multi-scene </strong>demonstrations captured on a full-scale humanoid robot, <strong>Kuavo 4 pro</strong>. It provides rich sensory signals and action trajectories for <strong>manipulation, mobility, and interactive tasks</strong>, enabling scalable robot learning in real environments.
+We introduce <strong>Le-Tong(LeT)</strong>, a <strong>real world dataset</strong> with <strong>multi-task, multi-scene </strong>demonstrations captured on a full-scale humanoid robot, <strong>Kuavo 4 pro</strong>. It provides rich sensory signals and action trajectories for <strong>manipulation, mobility, and interactive tasks</strong>, enabling scalable robot learning in real environments.
 
 (images@品宣)
 ## Key Features
@@ -17,8 +17,8 @@ We introduce <strong>Le-Tong(LeT)</strong>, a <strong>real-world dataset</strong
 
 ## Hardware Platform
 <div style="display: flex; justify-content: space-between; align-items: center;">
-  <img src="docs/images/kuavo4pro.png" alt="kuavo" style="width:37%; max-width:340px; min-width:180px; margin-right:16px;">
-  <img src="docs/images/kuavo_wheel.png" alt="kuavo_wheel" style="width:45%; max-width:340px; min-width:180px;">
+  <img src="docs/images/kuavo4pro.png" alt="kuavo" style="width:20%; max-width:340px; min-width:180px; margin-right:16px;">
+  <img src="docs/images/kuavo_wheel.png" alt="kuavo_wheel" style="width:35%; max-width:340px; min-width:180px;">
 </div>
 
 Above are the main hardware platforms used in our dataset, <strong>Kuavo 4 pro</strong> and <strong>Kuavo 4 pro Wheel Edition   </strong>.
@@ -45,7 +45,8 @@ The datasets listed above are all high-quality and have passed manual review whi
 ### Data Format
 All data are in the original rosbag format, with detailed information as follows:
 
-<details>
+
+<details open>
 <summary><strong>Rosbag Topic Demonstration</strong></summary>
 
 <details>
@@ -329,7 +330,7 @@ All data are in the original rosbag format, with detailed information as follows
 
 </details>
 
-</details>
+</details open>
 
 ### Label Format
 (@行帅)
@@ -342,7 +343,7 @@ We provide a comprehensive example repository to demonstrate how to use our data
 - <strong>Model training scripts</strong> for training on our dataset.
 - Full code and instructions for <strong>deployment</strong>, both in real-world robot and simulation environments.
 
-Please refer to our open-source practice repository: <strong>[kuavo_data_challenge](https://github.com/LejuRobotics/kuavo_data_challenge)</strong>.
+Please refer to our open-source repository: <strong>[kuavo_data_challenge](https://github.com/LejuRobotics/kuavo_data_challenge)</strong>.
 
 The repository contains documentation, setup instructions, and running examples. We recommend users start from there for dataset preparation, training, and deployment workflows.
 
