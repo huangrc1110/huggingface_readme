@@ -17,8 +17,8 @@ We introduce <strong>Le-Tong(LeT)</strong>, a <strong>real world dataset</strong
 
 ## Hardware Platform
 <div style="display: flex; justify-content: space-between; align-items: center;">
-  <img src="docs/images/kuavo4pro.png" alt="kuavo" style="width:20%; max-width:340px; min-width:180px; margin-right:16px;">
-  <img src="docs/images/kuavo_wheel.png" alt="kuavo_wheel" style="width:35%; max-width:340px; min-width:180px;">
+  <img src="docs/images/kuavo4pro.png" alt="kuavo" style="width:25%; max-width:340px; min-width:180px; margin-right:16px;">
+  <img src="docs/images/kuavo_wheel.png" alt="kuavo_wheel" style="width:30%; max-width:340px; min-width:180px;">
 </div>
 
 Above are the main hardware platforms used in our dataset, <strong>Kuavo 4 pro</strong> and <strong>Kuavo 4 pro Wheel Edition   </strong>.
