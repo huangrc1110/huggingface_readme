@@ -1,21 +1,32 @@
 # Le-Tong(LeT): A Real-World Dataset for Multi-Task Robot Learning
 
 ## Overview
-We introduce Le-Tong(LeT), a real-world dataset with multi-task, multi-scene demonstrations captured on a full-scale humanoid robot, Kuavo 4 pro. It provides rich sensory signals and action trajectories for manipulation, mobility, and interactive tasks, enabling scalable robot learning in real environments.
+We introduce <strong>Le-Tong(LeT)</strong>, a <strong>real-world dataset</strong> with <strong>multi-task, multi-scene </strong>demonstrations captured on a full-scale humanoid robot, <strong>Kuavo 4 pro</strong>. It provides rich sensory signals and action trajectories for <strong>manipulation, mobility, and interactive tasks</strong>, enabling scalable robot learning in real environments.
 
 (images@品宣)
 ## Key Features
-- N+ hours of real-world, full-scale humanoid robot demonstrations
+- <strong>N+ hours</strong> of real-world, full-scale humanoid robot demonstrations
 
-- Diverse domains including industrial, home, medical, service etc.
+- Diverse domains including <strong>industrial, home, medical, service etc.</strong>
 
-- Rich multi-task coverage: grasping, bimanual actions, tool use, locomotion, navigation, handover, fine manipulation, and human-robot interaction
+- Rich multi-task coverage: <strong>grasping, bimanual actions, tool use, locomotion, navigation, handover, fine manipulation, and human-robot interaction</strong>
 
-- Expert-labeled and human-verified demonstrations
+- <strong>Expert-labeled and human-verified demonstrations</strong>
 
-- Robust processing pipeline: unified utilities and training-ready data loaders
+- Robust processing pipeline: <strong>unified utilities and training-ready data loaders</strong>
+
 ## Hardware Platform
-(TBD)
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <img src="docs/images/kuavo4pro.png" alt="kuavo" style="width:37%; max-width:340px; min-width:180px; margin-right:16px;">
+  <img src="docs/images/kuavo_wheel.png" alt="kuavo_wheel" style="width:45%; max-width:340px; min-width:180px;">
+</div>
+
+Above are the main hardware platforms used in our dataset, <strong>Kuavo 4 pro</strong> and <strong>Kuavo 4 pro Wheel Edition   </strong>.
+
+- <strong>Robot Parameters</strong>: Height 1.66 m, Weight 55 kg, Support battery replacement without shutting down
+- <strong>Flexible Motion Control</strong>: 40 Degree of Freedom, Maximum walking speed of 7km/h and bipedal autonomous SLAM
+- <strong>High Generalization</strong>: Supporting access to multi-modal large modals such as Pangu, DeepSeek, ChatGPT and etc., with a total of 20+ Atomic skills
+
 ## Tasks
 (TBD)(GIF)
 ## Dataset
@@ -29,7 +40,7 @@ All of the above datasets have been validated using Diffusion Policy and ACT tra
 #### In Validation
 (not yet@行帅)
 
-The datasets listed above are all high-quality and have passed manual review. However, they have not yet been evaluated using model training or testing.
+The datasets listed above are all high-quality and have passed manual review which will be verified by model training and testing in the future.
 
 ### Data Format
 All data are in the original rosbag format, with detailed information as follows:
@@ -324,7 +335,18 @@ All data are in the original rosbag format, with detailed information as follows
 (@行帅)
 
 ## Usage
-(Overview of kdc repo(revised))(refer to kdc)
+We provide a comprehensive example repository to demonstrate how to use our dataset, including:
+
+- <strong>A data conversion tool (`rosbag2lerobot`) </strong>to convert raw rosbag files into formats suitable for model training.
+- Implementations and examples for <strong>two imitation learning models</strong>: Diffusion Policy and ACT.
+- <strong>Model training scripts</strong> for training on our dataset.
+- Full code and instructions for <strong>deployment</strong>, both in real-world robot and simulation environments.
+
+Please refer to our open-source practice repository: <strong>[kuavo_data_challenge](https://github.com/LejuRobotics/kuavo_data_challenge)</strong>.
+
+The repository contains documentation, setup instructions, and running examples. We recommend users start from there for dataset preparation, training, and deployment workflows.
+
+
 
 ## Stats
 (TBD)
