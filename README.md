@@ -1,411 +1,412 @@
-# Le-Tong(LeT): A Real World Humanoid Robot Dataset for Multi-Task Robot Learning
+# 乐一通(LeT): 一种用于机器人学习的多任务人形机器人真机数据集
 
 ---
 
 <div align="center">
 
-**English** | [中文](README_zh.md)
+**中文** | [English](README_EN.md)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
-- [🌟 Overview](#overview)
-- [✨ Key Features](#-key-features)
-- [🤖 Hardware Platform](#-hardware-platform)
-- [🎬 Tasks](#-tasks)
-- [📦 Dataset](#-dataset)
-- [🚀 Usage](#-usage)
-- [📊 Stats](#-stats)
-- [📝 Citation](#-citation)
-- [📄 License](#-license)
-- [🙏 Acknowledgement](#-acknowledgement)
+## 📋 目录
+- [🌟 概述](#概述)
+- [✨ 核心特性](#核心特性)
+- [🤖 硬件平台](#硬件平台)
+- [🎬 任务](#任务)
+- [📦 数据集](#数据集)
+- [🚀 使用指南](#使用指南)
+- [📊 统计数据](#统计数据)
+- [📝 引用](#引用)
+- [📄 许可](#许可证)
+- [🙏 致谢](#致谢)
 
 ---
 
-## 🌟 Overview
-We introduce <strong>Le-Tong(LeT)</strong>, a <strong>real world dataset</strong> with <strong>multi-task, multi-scene </strong>demonstrations captured on a full-scale humanoid robot, <strong>Kuavo 4 pro</strong>. It provides rich sensory signals and action trajectories for <strong>manipulation, mobility, and interactive tasks</strong>, enabling scalable robot learning in real environments.
+## 🌟 概述
+我们推出 <strong>乐一通，Le-Tong(LeT)</strong>，一个在<strong>全尺寸人形机器人Kuavo 4 pro</strong>上采集的<strong>真实世界数据集</strong>，包含<strong>多任务、多场景</strong>演示。该数据集旨在为<strong>操作、移动和交互任务</strong>提供训练数据，支持真实环境中的可扩展机器人学习。
 
 ***(images@品宣)***
 
 ---
 
-## ✨ Key Features
-- 🕐  Extensive real world, full scale humanoid robot demonstrations<strong>(continually updating)</strong>
+## ✨ 核心特性
+- 🕐 海量的真实世界、全尺寸人形机器人数据集(持续更新中)
 
-- 🌍 Diverse domains including <strong>industrial, home, medical, service etc.</strong>
+- 🌍 包括<strong>工业、家庭、医疗、服务等</strong>多个领域
 
-- 🎯 Rich multi-task coverage: <strong>grasping, bimanual actions, tool use, locomotion, navigation, handover, fine manipulation</strong>
+- 🎯 覆盖<strong>抓取、双手操作、工具使用、移动、导航、交接、精细操作</strong>等任务
 
-- ✅ <strong>Expert-labeled and human-verified demonstrations</strong>
+- ✅ <strong>经过专家标注和人工验证</strong>
 
-- 🔧 Robust processing pipeline: <strong>unified utilities and training-ready data loaders</strong>
+- 🔧 从<strong>数据转换，模型训练到推理验证全流程</strong>的完整工具链
 
 ---
 
-## 🤖 Hardware Platform
+## 🤖 硬件平台
 <div style="display: flex; justify-content: space-between; align-items: center;">
   <img src="docs/images/kuavo4pro.png" alt="kuavo" style="width:25%; max-width:340px; min-width:180px; margin-right:16px;">
   <img src="docs/images/kuavo_wheel.png" alt="kuavo_wheel" style="width:30%; max-width:340px; min-width:180px;">
 </div>
 
-Above are the main hardware platforms used in our dataset, <strong>Kuavo 4 pro</strong> and <strong>Kuavo 4 pro Wheel Edition</strong>.
+以上是我们数据集中使用的主要硬件平台，<strong>Kuavo 4 pro</strong> 和 <strong>Kuavo 4 pro 轮式版本</strong>。
 
-- 📏 <strong>Robot Parameters</strong>: Height 1.66 m, Weight 55 kg, Support battery replacement without shutting down
-- 🎮 <strong>Flexible Motion Control</strong>: 40 Degree of Freedom, Maximum walking speed of 7km/h and bipedal autonomous SLAM
-- 🧠 <strong>High Generalization</strong>: Supporting access to multi-modal large models such as Pangu, DeepSeek, ChatGPT, etc., with a total of 20+ Atomic skills
+- 📏 <strong>机器人参数</strong>：高度 1.66 米，重量 55 公斤，支持不停机电池更换
+- 🎮 <strong>灵活运动控制</strong>：40 自由度，最大行走速度 7km/h，双足自主 SLAM
+- 🧠 <strong>高泛化能力</strong>：支持接入盘古、DeepSeek、ChatGPT 等多模态大模型，总计 20+ 原子技能
 
 ---
 
-## 🎬 Tasks
+## 🎬 任务
 ***(TBD)(GIF)@训练场***
 
 ---
 
-## 📦 Dataset
+## 📦 数据集
 
-### 📁 Dataset Directory Structure
+### 📁 数据集目录结构
 ***(a tree here@行帅)***
 
-### 📄 Data Format
+### 📄 数据格式
 
-All data are in the original **rosbag** format, with detailed information as follows:
+所有数据均为原始 **rosbag** 格式，详细信息如下：
 
-> 📌 **Note**: Click on each topic below to expand and view its detailed specifications.
+> 📌 **注意**：点击下方每个主题以展开并查看详细。
 
 <details open>
-<summary><strong>Rosbag Topic Demonstration</strong></summary>
+<summary><strong>Rosbag 主题演示</strong></summary>
 
 <details>
-<summary>Camera RGB Image Data</summary>
+<summary>相机 RGB 图像数据</summary>
 
 - <strong>/cam_x/color/image_raw/compressed</strong>
-    1. Description
+    1. 描述
 
-        This ROS topic is used to provide the post-compression original RGB imaging data from the camera sensors. x here being h, l or r, denoting head, left and right wrist cameras
+        此ROS Topic用于提供来自相机传感器的压缩后原始 RGB 成像数据。x 可以是 h、l 或 r，分别表示头部、左手腕和右手腕相机
 
-    2. Message type
+    2. 消息类型
 
-        Type: sensor_msgs/CompressedImage
+        类型：sensor_msgs/CompressedImage
 
-    3. Message body
-        - header (std_msgs/Header): Message head; includes timestamp, serial number, coordinate system identification, etc.
-        - format (string): Image encoding format
-        - data (uint8[]): Image data
+    3. 消息本体
+        - header (std_msgs/Header)：消息头；包括时间戳、序列号、坐标系标识等
+        - format (string)：图像编码格式
+        - data (uint8[])：图像数据
 
 </details>
 
 <details>
-<summary>Camera Depth Image Data</summary>
+<summary>相机深度图像数据</summary>
 
 - <strong>/cam_x/depth/image_rect_raw/compressed</strong>
-    1. Description
+    1. 描述
 
-        This ROS topic is used to provide the post-compression original depth imaging data from the camera sensors. x here being h, l or r, denoting head, left and right wrist cameras
+        此ROS Topic用于提供来自相机传感器的压缩后原始深度成像数据。x 可以是 h、l 或 r，分别表示头部、左手腕和右手腕相机
 
-    2. Message type
+    2. 消息类型
 
-        Type: sensor_msgs/CompressedImage
+        类型：sensor_msgs/CompressedImage
 
-    3. Message body
-        - header (std_msgs/Header): Message head; includes timestamp, serial number, coordinate system identification, etc.
-        - format (string): Image encoding format
-        - data (uint8[]): Image data
+    3. 消息本体
+        - header (std_msgs/Header)：消息头；包括时间戳、序列号、坐标系标识等
+        - format (string)：图像编码格式
+        - data (uint8[])：图像数据
 
 </details>
 
 <details>
-<summary>Arm trajectory control</summary>
+<summary>手臂轨迹控制</summary>
 
 - <strong>/kuavo_arm_traj</strong>
-    1. Description
+    1. 描述
 
-        This ROS topic is used to control the arm trajectories of the robot. It publishes arm target joint positions to control the arms with high precision.
+        此ROS Topic用于控制机器人的手臂轨迹。它发布手臂目标关节位置，以高精度控制手臂。
 
-    2. Message type
+    2. 消息类型
 
-        Type: sensor_msgs/JointState
+        类型：sensor_msgs/JointState
 
-    3. Message body
-        - header (std_msgs/Header): Message head; includes timestamp, serial number, coordinate system identification, etc.
+    3. 消息本体
+        - header (std_msgs/Header)：消息头；包括时间戳、序列号、坐标系标识等
 
-        - name (list of string): List of the arm joints. When there are 14 joints in total, the names will be from “arm_joint_1” to “arm_joint_14”.
+        - name (string列表)：手臂关节列表。当总共有 14 个关节时，名称将从 "arm_joint_1" 到 "arm_joint_14"
 
-        - position (list of float): A list of current arm joint positions. The data structure is similar to items 12-25 of sensor_data_raw below.
+        - position (float列表)：当前手臂关节位置列表。数据结构类似于下面 sensor_data_raw 的第 12-25 项。
 
 </details>
 
 <details>
-<summary>Raw sensor data</summary>
+<summary>原始传感器数据</summary>
 
 - <strong>/sensors_data_raw</strong>
-    1. Description
+    1. 描述
 
-        Topic used to publish all real-robot or simulator raw sensor data, from joint data to IMU data to end effector data
+        用于发布所有真实机器人或模拟器原始传感器数据的主题，从关节数据到 IMU 数据再到末端执行器数据
 
-    2. Message type
+    2. 消息类型
         
-        Type: kuavo_msgs/sensorsData
+        类型：kuavo_msgs/sensorsData
 
-    3. Message body
+    3. 消息本体
         
-        - sensor_time (time): Timestamp
+        - sensor_time (time)：时间戳
 
-        - joint_data (kuavo_msgs/jointData): Joint data: position, velocity, acceleration, current
+        - joint_data (kuavo_msgs/jointData)：关节数据：位置、速度、加速度、电流
 
-        - imu_data (kuavo_msgs/imuData): Includes gyroscope, accelerometer, free angular velocity, quarternion
+        - imu_data (kuavo_msgs/imuData)：包括陀螺仪、加速度计、自由角速度、四元数
 
-        - end_effector_data (kuavo_msgs/endEffectorData): End effector data, not currently used.
+        - end_effector_data (kuavo_msgs/endEffectorData)：末端执行器数据，当前未使用。
 
-    4. Joint data description
-        - Order of data
+    4. 关节数据描述
+        - 数据顺序
 
-            - First 12 elements are lower body motor data:
+            - 前 12 个元素是下半身电机数据：
 
-                - 0~5 are left limb data (l_leg_roll, l_leg_yaw, l_leg_pitch, l_knee, l_foot_pitch, l_foot_roll)
+                - 0~5 是左肢数据 (l_leg_roll, l_leg_yaw, l_leg_pitch, l_knee, l_foot_pitch, l_foot_roll)
 
-                - 6~11 are right limb data (r_leg_roll, r_leg_yaw, r_leg_pitch, r_knee, r_foot_pitch, r_foot_roll)
+                - 6~11 是右肢数据 (r_leg_roll, r_leg_yaw, r_leg_pitch, r_knee, r_foot_pitch, r_foot_roll)
 
-            - The subsequent 14 elements are arm motor data:
+            - 随后 14 个元素是手臂电机数据：
 
-                - 12~18 are left arm motor data (“l_arm_pitch”, “l_arm_roll”, “l_arm_yaw”, “l_forearm_pitch”, “l_hand_yaw”, “l_hand_pitch”, “l_hand_roll”)
+                - 12~18 是左臂电机数据 ("l_arm_pitch", "l_arm_roll", "l_arm_yaw", "l_forearm_pitch", "l_hand_yaw", "l_hand_pitch", "l_hand_roll")
 
-                - 19~25 are right arm motor data (“r_arm_pitch”, “r_arm_roll”, “r_arm_yaw”, “r_forearm_pitch”, “r_hand_yaw”, “r_hand_pitch”, “r_hand_roll”)
+                - 19~25 是右臂电机数据 ("r_arm_pitch", "r_arm_roll", "r_arm_yaw", "r_forearm_pitch", "r_hand_yaw", "r_hand_pitch", "r_hand_roll")
 
-            - The last 2 elements are head motor data: head_yaw and head_pitch
+            - 最后 2 个元素是头部电机数据：head_yaw 和 head_pitch
 
-        - Units:
+        - 单位：
 
-            - Positions: radians
+            - 位置：弧度
 
-            - Speed: radians per second (radian/s)
+            - 速度：弧度每秒 (radian/s)
 
-            - Acceleration: radians per square second (radian/s²)
+            - 加速度：弧度每平方秒 (radian/s²)
 
-            - Current: Amperes (A)
+            - 电流：安培 (A)
 
-    5. IMU Data Description
-        - gyro: Gyroscope angular velocities, in rad/s
+    5. IMU 数据描述
+        - gyro：陀螺仪角速度，单位为 rad/s
 
-        - acc: Accelerometer acceleration, in m/s²
+        - acc：加速度计加速度，单位为 m/s²
 
-        - quat: IMU orientation
+        - quat：IMU 方向
 
 </details>
 
 <details>
-<summary>Dexterous hand position (Real Robot dataset only)</summary>
+<summary>灵巧手位置（仅真实机器人数据集）</summary>
 
 - <strong>/control_robot_hand_position</strong>
-    1. Description
+    1. 描述
 
-        This ROS topic is used to control the movement of both hands. It publishes target joint positions to control the hands with high precision.
+        此ROS Topic用于控制双手的运动。它发布目标关节位置，以高精度控制双手。
 
-    2. Message type
+    2. 消息类型
         
-        Type: kuavo_msgs/robotHandPosition
+        类型：kuavo_msgs/robotHandPosition
 
-    3. Message body
+    3. 消息本体
     
-        - left_hand_position (list of float): Left hand position in a size 6 array, each element is between [0, 100], where 0 is fully open, 100 is fully closed
+        - left_hand_position (float列表)：左手位置，大小为 6 的数组，每个元素在 [0, 100] 之间，其中 0 表示完全张开，100 表示完全闭合
 
-        - right_hand_position (list of float) Right hand position in a size 6 array, each element is between [0, 100], where 0 is fully open, 100 is fully closed
+        - right_hand_position (float列表)：右手位置，大小为 6 的数组，每个元素在 [0, 100] 之间，其中 0 表示完全张开，100 表示完全闭合
 
 </details>
 
 <details>
-<summary>Dexterous hand state (Real Robot dataset only)</summary>
+<summary>灵巧手状态（仅真实机器人数据集）</summary>
 
 - <strong>/dexhand/state</strong>
-    1. Description
+    1. 描述
 
-        This ROS topic is used to publish dexterous hands’ status
+        此ROS Topic用于发布灵巧手的状态
 
-    2. Message type
+    2. 消息类型
 
-        Type: sensor_msgs/JointState
+        类型：sensor_msgs/JointState
 
-    3. Message body
-        - name (list of string): list of joint names, 12 joints in total:
+    3. 消息本体
+        - name (string列表)：关节名称列表，总共 12 个关节：
 
-        - position (list of float): List of joint positions, 12 in total, first 6 being left joint positions, later 6 being right joint positions
+        - position (float列表)：关节位置列表，总共 12 个，前 6 个为左关节位置，后 6 个为右关节位置
 
-        - velocity (list of float): List of joint velocities, 12 in total, first 6 being left joint velocities, later 6 being right joint velocities
+        - velocity (float列表)：关节速度列表，总共 12 个，前 6 个为左关节速度，后 6 个为右关节速度
 
-        - effort (list of float): List of joint (electrical) current, 12 in total, first 6 being left joint current data, later 6 being right joint current data
+        - effort (float列表)：关节（电机）电流列表，总共 12 个，前 6 个为左关节电流数据，后 6 个为右关节电流数据
 
 </details>
 
 <details>
-<summary>Claw control data (Real Robot dataset only)</summary>
+<summary>夹爪控制数据（仅真实机器人数据集）</summary>
 
 - <strong>/control_robot_leju_claw</strong>
-    1. Description
+    1. 描述
 
-        This ROS topic is used to control the robot hands (i.e. two-finger claws)
+        此ROS Topic用于控制机器人手部（即二指爪）
 
-    2. Message type
+    2. 消息类型
     
-        Type: kuavo_msgs/controlLejuClaw
+        类型：kuavo_msgs/controlLejuClaw
 
-    3. Message body
-        - name (list of string): Length 2 list, consisting of “left_claw”, “right_claw”
+    3. 消息本体
+        - name (string列表)：长度为 2 的列表，由 "left_claw"、"right_claw" 组成
 
-        - position (list of float): Length 2 list, consisting of left and right claw target positions, each element is between [0, 100], where 0 denotes fully open, 100 denotes fully closed
+        - position (float列表)：长度为 2 的列表，包含左右爪的目标位置，每个元素在 [0, 100] 之间，其中 0 表示完全张开，100 表示完全闭合
 
-        - velocity (list of float): Length 2 list, target velocities for the claws, again between [0, 100]. Defaults to 50.
+        - velocity (float列表)：长度为 2 的列表，爪的目标速度，同样在 [0, 100] 之间。默认为 50。
 
-        - effort (list of float): Length 2 list, target current for claws, in Amps. Defaults to 1 Amp
+        - effort (float列表)：长度为 2 的列表，爪的目标电流，单位为安培。默认为 1 安培
 
 </details>
 
 <details>
-<summary>Claw states (Real Robot dataset only)</summary>
+<summary>夹爪状态（仅真实机器人数据集）</summary>
 
 - <strong>/leju_claw_state</strong>
-    1. Description
+    1. 描述
         
-        /leju_claw_state topic is used to publish the state, position, velocity and efforts of each of the claws.
+        /leju_claw_state 主题用于发布每个夹爪的状态、位置、速度和电流。
 
-    2. Type
+    2. 类型
         
         kuavo_msgs/lejuClawState
 
-    3. Message body
-        - state: Data type int8[]; Length 2 list denoting Claw states. First element denotes left claw, the other being right claw.
+    3. 消息本体
+        - state：数据类型 int8[]；长度为 2 的列表，表示夹爪状态。第一个元素表示左爪，另一个表示右爪。
 
-        - data: Data type kuavo_msgs/endEffectorData; Claw position, velocity and effort
+        - data：数据类型 kuavo_msgs/endEffectorData；夹爪位置、速度和电流
 
-        - state values’ meanings:
+        - 状态值的含义：
 
-            - -1: Error, indicating execution error
+            - -1：错误，表示执行错误
 
-            - 0: Unknown, default status upon initialisation
+            - 0：未知，初始化时的默认状态
 
-            - 1: Moving, indicating movement of the claws in progress
+            - 1：移动中，表示夹爪正在运动
 
-            - 2: Reached, indicating the target positions have been successfully reached
+            - 2：到达，表示已成功到达目标位置
 
-            - 3: Grabbed, indicating successful grasp of an item
+            - 3：抓取，表示成功抓取物品
 
-            Please refer to the descriptions in /control_robot_leju_claw for all the kuavo_msgs/endEffectorData messages inside data.
+            请参阅 /control_robot_leju_claw 中的描述，了解数据中所有 kuavo_msgs/endEffectorData 消息。
 
 </details>
 
 
+
 <details>
-<summary>Gripper control (Simulator dataset only)</summary>
+<summary>仿真夹爪控制（仅模拟器数据集）</summary>
 
 - <strong>/gripper/command</strong>
-    1. Description
+    1. 描述
 
-        This ROS topic is used to control the grippers (fingers)’ movement in the simulator.
+        此ROS Topic用于控制模拟器中夹爪的运动。
 
-    2. Message type
+    2. 消息类型
 
-        Type: sensor_msgs/JointState
+        类型：sensor_msgs/JointState
 
-    3. Message body
-        - header (std_msgs/Header): Message head; includes timestamp, serial number, coordinate system identification, etc.
+    3. 消息本体
+        - header (std_msgs/Header)：消息头；包括时间戳、序列号、坐标系标识等
 
-        - position (list of float): Size 2 array, data being the target positions of the left and right grippers, each element is between [0, 255], where 0 is fully open and 255 is fully shut.
+        - position (float列表)：大小为 2 的数组，数据为左右夹爪的目标位置，每个元素在 [0, 255] 之间，其中 0 表示完全张开，255 表示完全关闭。
 
 </details>
 
 <details>
-<summary>Gripper state (Simulator dataset only)</summary>
+<summary>仿真夹爪状态（仅模拟器数据集）</summary>
 
 - <strong>/gripper/state</strong>
-    1. Description
+    1. 描述
         
-        This ROS topic is used to capture the current movement of the grippers (fingers) in the simulator.
+        此ROS Topic用于捕获模拟器中夹爪的当前运动。
 
-    2. Message type
+    2. 消息类型
         
-        Type: sensor_msgs/JointState
+        类型：sensor_msgs/JointState
 
-    3. Message body
-        - header (std_msgs/Header): Message head; includes timestamp, serial number, coordinate system identification, etc.
+    3. 消息本体
+        - header (std_msgs/Header)：消息头；包括时间戳、序列号、坐标系标识等
 
-        - position (list of float): Size 2 array, data being the current positions of the left and right grippers, each element is between [0, 0.8], where 0 is fully open and 0.8 is fully shut
+        - position (float列表)：大小为 2 的数组，数据为左右夹爪的当前位置，每个元素在 [0, 0.8] 之间，其中 0 表示完全张开，0.8 表示完全关闭
 
 </details>
 
 <details>
-<summary>Robot positional commands (Simulation Task 4 only)</summary>
+<summary>机器人位置命令（仅模拟任务 4）</summary>
 
 - <strong>/cmd_pose_world</strong>
-    1. Description
+    1. 描述
         
-        Topic used to publish robot position commands
+        用于发布机器人位置命令的主题
 
-    2. Message type
+    2. 消息类型
         
-        Type: geometry_msgs/Twist
+        类型：geometry_msgs/Twist
 
-    3. Message body
-        - linear.x (float): x-directional data in world coordinates, in metres
+    3. 消息本体
+        - linear.x (float)：世界坐标系中的 x 方向数据，单位为米
 
-        - linear.y (float): y-directional data in world coordinates, in metres
+        - linear.y (float)：世界坐标系中的 y 方向数据，单位为米
 
-        - linear.z (float): z-directional data in world coordinates, in metres
+        - linear.z (float)：世界坐标系中的 z 方向数据，单位为米
 
-        - angular.x (float): x-directional rotation angle in world coordinates, in radians
+        - angular.x (float)：世界坐标系中的 x 方向旋转角度，单位为弧度
 
-        - angular.y (float): y-directional rotation angle in world coordinates, in radians
+        - angular.y (float)：世界坐标系中的 y 方向旋转角度，单位为弧度
 
-        - angular.z (float): z-directional rotation angle in world coordinates, in radians
+        - angular.z (float)：世界坐标系中的 z 方向旋转角度，单位为弧度
 
 </details>
 
 </details>
 
-### 🏷️ Label Format
-Annotation information is stored in a JSON file with the same name as the bag file. 
+### 🏷️ 标注格式
+标注信息存储在与 bag 文件同名的 JSON 文件中。 
 
-Example:
+示例：
 ```json
 {
-  "loaction": "长三角一体化示范区智能机器人训练中心", // Data source
-  "primaryScene": "默认一级场景", // Primary scene name
-  "primarySceneCode": "default_level_one_scene", // Primary scene code
-  "secondaryScene": "3C工厂场景", // Secondary scene name
-  "secondarySceneCode": "3C factory manufacturing", // Secondary scene code
-  "tertiaryScene": "线圈分拣", // Tertiary scene name
-  "tertiarySceneCode": "Coil sorting", // Tertiary scene code
-  "initSceneText": "各种颜色的线圈放置在桌子中间，物料箱放置在桌子两边，机器人位于桌子后方", // Initial scene description
-  "englishInitSceneText": "Coils of various colors are placed in the middle of the table, material boxes are placed on both sides of the table, and the robot is located at the back of the table", // Initial scene description (English)
-  "taskGroupName": "单个线圈分拣", // Task group name
-  "taskGroupCode": "single_coil_sorting", // Task group code
-  "taskName": "7-22-线圈分类", // Task name
-  "taskCode": "XQFL_11", // Task code
-  "deviceSn": "P4-209", // Device serial number
-  "taskPrompt": "", // Task description
-  "marks": [ // Annotation segments
+  "loaction": "长三角一体化示范区智能机器人训练中心", // 数据来源
+  "primaryScene": "默认一级场景", // 一级场景名称
+  "primarySceneCode": "default_level_one_scene", // 一级场景代码
+  "secondaryScene": "3C工厂场景", // 二级场景名称
+  "secondarySceneCode": "3C factory manufacturing", // 二级场景代码
+  "tertiaryScene": "线圈分拣", // 三级场景名称
+  "tertiarySceneCode": "Coil sorting", // 三级场景代码
+  "initSceneText": "各种颜色的线圈放置在桌子中间，物料箱放置在桌子两边，机器人位于桌子后方", // 初始场景描述
+  "englishInitSceneText": "Coils of various colors are placed in the middle of the table, material boxes are placed on both sides of the table, and the robot is located at the back of the table", // 初始场景描述（英文）
+  "taskGroupName": "单个线圈分拣", // 任务组名称
+  "taskGroupCode": "single_coil_sorting", // 任务组代码
+  "taskName": "7-22-线圈分类", // 任务名称
+  "taskCode": "XQFL_11", // 任务代码
+  "deviceSn": "P4-209", // 设备序列号
+  "taskPrompt": "", // 任务描述
+  "marks": [ // 标注段落
     {
-      "taskId": "1947326026455584768", // Task ID
-      "markStart": "2025-07-22 9:18:39.640", // Mark start timestamp
-      "markEnd": "2025-07-22 9:18:39.814", // Mark end timestamp
-      "duration": 0.233, // Mark duration (seconds)
-      "startPosition": 0.7363737795977026, // Mark start position
-      "endPosition": 0.769568869806783, // Mark end position
-      "skillAtomic": "pick", // Atomic skill
-      "skillDetail": "从桌子上拿起线圈", // Skill detail
-      "enSkillDetail": "pick coil from table", // Skill detail (English)
-      "markType": "step" // Mark type
+      "taskId": "1947326026455584768", // 任务 ID
+      "markStart": "2025-07-22 9:18:39.640", // 标注开始时间戳
+      "markEnd": "2025-07-22 9:18:39.814", // 标注结束时间戳
+      "duration": 0.233, // 标注持续时间（秒）
+      "startPosition": 0.7363737795977026, // 标注开始位置
+      "endPosition": 0.769568869806783, // 标注结束位置
+      "skillAtomic": "pick", // 原子技能
+      "skillDetail": "从桌子上拿起线圈", // 技能详情
+      "enSkillDetail": "pick coil from table", // 技能详情（英文）
+      "markType": "step" // 标注类型
     },
     {
-      "taskId": "1947326026455584768", // Task ID
-      "markStart": "2025-07-22 9:18:40.950", // Mark start timestamp
-      "markEnd": "2025-07-22 9:18:41.180", // Mark end timestamp
-      "duration": 0.23, // Mark duration (seconds)
-      "startPosition": 0.9228460404165317, // Mark start position
-      "endPosition": 0.9556361498412722, // Mark end position
-      "skillAtomic": "place", // Atomic skill
-      "skillDetail": "将线圈放置到物料箱中", // Skill detail
-      "enSkillDetail": "place coil in material box", // Skill detail (English)
-      "markType": "step" // Mark type
+      "taskId": "1947326026455584768", // 任务 ID
+      "markStart": "2025-07-22 9:18:40.950", // 标注开始时间戳
+      "markEnd": "2025-07-22 9:18:41.180", // 标注结束时间戳
+      "duration": 0.23, // 标注持续时间（秒）
+      "startPosition": 0.9228460404165317, // 标注开始位置
+      "endPosition": 0.9556361498412722, // 标注结束位置
+      "skillAtomic": "place", // 原子技能
+      "skillDetail": "将线圈放置到物料箱中", // 技能详情
+      "enSkillDetail": "place coil in material box", // 技能详情（英文）
+      "markType": "step" // 标注类型
     }
   ]
 }
@@ -413,39 +414,39 @@ Example:
 
 ---
 
-## 🚀 Usage
+## 🚀 使用指南
 
+我们提供了一个全面的示例仓库来演示如何使用我们的数据集，包括：
 
-We provide a comprehensive example repository to demonstrate how to use our dataset, including:
+- 🔄 <strong>数据转换工具 (`rosbag2lerobot`)</strong> 将原始 rosbag 文件转换为适合模型训练的lerobot格式
+- 🤖 <strong>两种模仿学习模型</strong>：Diffusion Policy 和 ACT
+- 🎓 <strong>模型训练脚本</strong> 用于在我们的数据集上进行训练
+- 🚁 完整的代码和<strong>部署</strong>说明，适用于真实世界机器人和模拟环境
 
-- 🔄 <strong>A data conversion tool (`rosbag2lerobot`)</strong> to convert raw rosbag files into formats suitable for model training.
-- 🤖 Implementations and examples for <strong>two imitation learning models</strong>: Diffusion Policy and ACT.
-- 🎓 <strong>Model training scripts</strong> for training on our dataset.
-- 🚁 Full code and instructions for <strong>deployment</strong>, both in real-world robot and simulation environments.
+请参考我们的开源仓库：<strong>[kuavo_data_challenge](https://github.com/LejuRobotics/kuavo_data_challenge)</strong>。
 
-Please refer to our open-source repository: <strong>[kuavo_data_challenge](https://github.com/LejuRobotics/kuavo_data_challenge)</strong>.
-
-The repository contains documentation, setup instructions, and running examples. We recommend users start from there for dataset preparation, training, and deployment workflows.
+该仓库包含文档、设置说明和运行示例。
 
 ---
 
-## 📊 Stats
+## 📊 统计数据
 (TBD)
 
 ---
 
-## 📝 Citation
-If you use this dataset in your research, please cite:
+## 📝 引用
+如果您在研究中使用此数据集，请引用：
 ```
 (TBD)
 ```
 
 ---
 
-## 📄 License
+## 📄 许可证
 (TBD)
 
 ---
 
-## 🙏 Acknowledgement
+## 🙏 致谢
 (TBD)
+
