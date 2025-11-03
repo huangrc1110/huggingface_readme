@@ -1,4 +1,12 @@
-# Le-Tong(LeT): A Real World Dataset for Multi-Task Robot Learning
+# Le-Tong(LeT): A Real World Humanoid Robot Dataset for Multi-Task Robot Learning
+
+---
+
+<div align="center">
+
+**English** | [中文](README_zh.md)
+
+</div>
 
 ---
 
@@ -23,12 +31,12 @@ We introduce <strong>Le-Tong(LeT)</strong>, a <strong>real world dataset</strong
 
 ---
 
-## ✨ Key Features（具体需要修改）
-- 🕐 <strong>N+ hours</strong> of real world, full scale humanoid robot demonstrations
+## ✨ Key Features
+- 🕐  Extensive real world, full scale humanoid robot demonstrations<strong>(continually updating)</strong>
 
 - 🌍 Diverse domains including <strong>industrial, home, medical, service etc.</strong>
 
-- 🎯 Rich multi-task coverage: <strong>grasping, bimanual actions, tool use, locomotion, navigation, handover, fine manipulation, and human-robot interaction</strong>
+- 🎯 Rich multi-task coverage: <strong>grasping, bimanual actions, tool use, locomotion, navigation, handover, fine manipulation</strong>
 
 - ✅ <strong>Expert-labeled and human-verified demonstrations</strong>
 
@@ -59,15 +67,6 @@ Above are the main hardware platforms used in our dataset, <strong>Kuavo 4 pro</
 
 ### 📁 Dataset Directory Structure
 ***(a tree here@行帅)***
-#### ✅ Verified
-***(verified datasets@行帅)***
-
-All of the above datasets have been validated using Diffusion Policy and ACT training, ensuring both usability and reliability for downstream robot learning applications.
-
-#### 🔄 In Validation
-***(not yet@行帅)***
-
-The datasets listed above are all high-quality and have passed manual review which will be verified by model training and testing in the future.
 
 ### 📄 Data Format
 
@@ -134,6 +133,64 @@ All data are in the original **rosbag** format, with detailed information as fol
         - name (list of string): List of the arm joints. When there are 14 joints in total, the names will be from “arm_joint_1” to “arm_joint_14”.
 
         - position (list of float): A list of current arm joint positions. The data structure is similar to items 12-25 of sensor_data_raw below.
+
+</details>
+
+<details>
+<summary>Raw sensor data</summary>
+
+- <strong>/sensors_data_raw</strong>
+    1. Description
+
+        Topic used to publish all real-robot or simulator raw sensor data, from joint data to IMU data to end effector data
+
+    2. Message type
+        
+        Type: kuavo_msgs/sensorsData
+
+    3. Message body
+        
+        - sensor_time (time): Timestamp
+
+        - joint_data (kuavo_msgs/jointData): Joint data: position, velocity, acceleration, current
+
+        - imu_data (kuavo_msgs/imuData): Includes gyroscope, accelerometer, free angular velocity, quarternion
+
+        - end_effector_data (kuavo_msgs/endEffectorData): End effector data, not currently used.
+
+    4. Joint data description
+        - Order of data
+
+            - First 12 elements are lower body motor data:
+
+                - 0~5 are left limb data (l_leg_roll, l_leg_yaw, l_leg_pitch, l_knee, l_foot_pitch, l_foot_roll)
+
+                - 6~11 are right limb data (r_leg_roll, r_leg_yaw, r_leg_pitch, r_knee, r_foot_pitch, r_foot_roll)
+
+            - The subsequent 14 elements are arm motor data:
+
+                - 12~18 are left arm motor data (“l_arm_pitch”, “l_arm_roll”, “l_arm_yaw”, “l_forearm_pitch”, “l_hand_yaw”, “l_hand_pitch”, “l_hand_roll”)
+
+                - 19~25 are right arm motor data (“r_arm_pitch”, “r_arm_roll”, “r_arm_yaw”, “r_forearm_pitch”, “r_hand_yaw”, “r_hand_pitch”, “r_hand_roll”)
+
+            - The last 2 elements are head motor data: head_yaw and head_pitch
+
+        - Units:
+
+            - Positions: radians
+
+            - Speed: radians per second (radian/s)
+
+            - Acceleration: radians per square second (radian/s²)
+
+            - Current: Amperes (A)
+
+    5. IMU Data Description
+        - gyro: Gyroscope angular velocities, in rad/s
+
+        - acc: Accelerometer acceleration, in m/s²
+
+        - quat: IMU orientation
 
 </details>
 
@@ -236,63 +293,6 @@ All data are in the original **rosbag** format, with detailed information as fol
 
 </details>
 
-<details>
-<summary>Raw sensor data</summary>
-
-- <strong>/sensors_data_raw</strong>
-    1. Description
-
-        Topic used to publish all real-robot or simulator raw sensor data, from joint data to IMU data to end effector data
-
-    2. Message type
-        
-        Type: kuavo_msgs/sensorsData
-
-    3. Message body
-        
-        - sensor_time (time): Timestamp
-
-        - joint_data (kuavo_msgs/jointData): Joint data: position, velocity, acceleration, current
-
-        - imu_data (kuavo_msgs/imuData): Includes gyroscope, accelerometer, free angular velocity, quarternion
-
-        - end_effector_data (kuavo_msgs/endEffectorData): End effector data, not currently used.
-
-    4. Joint data description
-        - Order of data
-
-            - First 12 elements are lower body motor data:
-
-                - 0~5 are left limb data (l_leg_roll, l_leg_yaw, l_leg_pitch, l_knee, l_foot_pitch, l_foot_roll)
-
-                - 6~11 are right limb data (r_leg_roll, r_leg_yaw, r_leg_pitch, r_knee, r_foot_pitch, r_foot_roll)
-
-            - The subsequent 14 elements are arm motor data:
-
-                - 12~18 are left arm motor data (“l_arm_pitch”, “l_arm_roll”, “l_arm_yaw”, “l_forearm_pitch”, “l_hand_yaw”, “l_hand_pitch”, “l_hand_roll”)
-
-                - 19~25 are right arm motor data (“r_arm_pitch”, “r_arm_roll”, “r_arm_yaw”, “r_forearm_pitch”, “r_hand_yaw”, “r_hand_pitch”, “r_hand_roll”)
-
-            - The last 2 elements are head motor data: head_yaw and head_pitch
-
-        - Units:
-
-            - Positions: radians
-
-            - Speed: radians per second (radian/s)
-
-            - Acceleration: radians per square second (radian/s²)
-
-            - Current: Amperes (A)
-
-    5. IMU Data Description
-        - gyro: Gyroscope angular velocities, in rad/s
-
-        - acc: Accelerometer acceleration, in m/s²
-
-        - quat: IMU orientation
-
-</details>
 
 <details>
 <summary>Gripper control (Simulator dataset only)</summary>
@@ -362,13 +362,59 @@ All data are in the original **rosbag** format, with detailed information as fol
 </details>
 
 ### 🏷️ Label Format
-***(@行帅)***
+Annotation information is stored in a JSON file with the same name as the bag file. 
+
+Example:
+```json
+{
+  "loaction": "长三角一体化示范区智能机器人训练中心", // Data source
+  "primaryScene": "默认一级场景", // Primary scene name
+  "primarySceneCode": "default_level_one_scene", // Primary scene code
+  "secondaryScene": "3C工厂场景", // Secondary scene name
+  "secondarySceneCode": "3C factory manufacturing", // Secondary scene code
+  "tertiaryScene": "线圈分拣", // Tertiary scene name
+  "tertiarySceneCode": "Coil sorting", // Tertiary scene code
+  "initSceneText": "各种颜色的线圈放置在桌子中间，物料箱放置在桌子两边，机器人位于桌子后方", // Initial scene description
+  "englishInitSceneText": "Coils of various colors are placed in the middle of the table, material boxes are placed on both sides of the table, and the robot is located at the back of the table", // Initial scene description (English)
+  "taskGroupName": "单个线圈分拣", // Task group name
+  "taskGroupCode": "single_coil_sorting", // Task group code
+  "taskName": "7-22-线圈分类", // Task name
+  "taskCode": "XQFL_11", // Task code
+  "deviceSn": "P4-209", // Device serial number
+  "taskPrompt": "", // Task description
+  "marks": [ // Annotation segments
+    {
+      "taskId": "1947326026455584768", // Task ID
+      "markStart": "2025-07-22 9:18:39.640", // Mark start timestamp
+      "markEnd": "2025-07-22 9:18:39.814", // Mark end timestamp
+      "duration": 0.233, // Mark duration (seconds)
+      "startPosition": 0.7363737795977026, // Mark start position
+      "endPosition": 0.769568869806783, // Mark end position
+      "skillAtomic": "pick", // Atomic skill
+      "skillDetail": "从桌子上拿起线圈", // Skill detail
+      "enSkillDetail": "pick coil from table", // Skill detail (English)
+      "markType": "step" // Mark type
+    },
+    {
+      "taskId": "1947326026455584768", // Task ID
+      "markStart": "2025-07-22 9:18:40.950", // Mark start timestamp
+      "markEnd": "2025-07-22 9:18:41.180", // Mark end timestamp
+      "duration": 0.23, // Mark duration (seconds)
+      "startPosition": 0.9228460404165317, // Mark start position
+      "endPosition": 0.9556361498412722, // Mark end position
+      "skillAtomic": "place", // Atomic skill
+      "skillDetail": "将线圈放置到物料箱中", // Skill detail
+      "enSkillDetail": "place coil in material box", // Skill detail (English)
+      "markType": "step" // Mark type
+    }
+  ]
+}
+```
 
 ---
 
 ## 🚀 Usage
 
-> 💡 **Quick Start**: Visit our [repository](https://github.com/LejuRobotics/kuavo_data_challenge) for full documentation and examples.
 
 We provide a comprehensive example repository to demonstrate how to use our dataset, including:
 
