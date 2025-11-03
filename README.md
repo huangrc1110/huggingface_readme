@@ -1,50 +1,79 @@
 # Le-Tong(LeT): A Real World Dataset for Multi-Task Robot Learning
 
-## Overview
+---
+
+## 📋 Table of Contents
+- [🌟 Overview](#overview)
+- [✨ Key Features](#-key-features)
+- [🤖 Hardware Platform](#-hardware-platform)
+- [🎬 Tasks](#-tasks)
+- [📦 Dataset](#-dataset)
+- [🚀 Usage](#-usage)
+- [📊 Stats](#-stats)
+- [📝 Citation](#-citation)
+- [📄 License](#-license)
+- [🙏 Acknowledgement](#-acknowledgement)
+
+---
+
+## 🌟 Overview
 We introduce <strong>Le-Tong(LeT)</strong>, a <strong>real world dataset</strong> with <strong>multi-task, multi-scene </strong>demonstrations captured on a full-scale humanoid robot, <strong>Kuavo 4 pro</strong>. It provides rich sensory signals and action trajectories for <strong>manipulation, mobility, and interactive tasks</strong>, enabling scalable robot learning in real environments.
 
-(images@品宣)
-## Key Features
-- <strong>N+ hours</strong> of real-world, full-scale humanoid robot demonstrations
+***(images@品宣)***
 
-- Diverse domains including <strong>industrial, home, medical, service etc.</strong>
+---
 
-- Rich multi-task coverage: <strong>grasping, bimanual actions, tool use, locomotion, navigation, handover, fine manipulation, and human-robot interaction</strong>
+## ✨ Key Features（具体需要修改）
+- 🕐 <strong>N+ hours</strong> of real world, full scale humanoid robot demonstrations
 
-- <strong>Expert-labeled and human-verified demonstrations</strong>
+- 🌍 Diverse domains including <strong>industrial, home, medical, service etc.</strong>
 
-- Robust processing pipeline: <strong>unified utilities and training-ready data loaders</strong>
+- 🎯 Rich multi-task coverage: <strong>grasping, bimanual actions, tool use, locomotion, navigation, handover, fine manipulation, and human-robot interaction</strong>
 
-## Hardware Platform
+- ✅ <strong>Expert-labeled and human-verified demonstrations</strong>
+
+- 🔧 Robust processing pipeline: <strong>unified utilities and training-ready data loaders</strong>
+
+---
+
+## 🤖 Hardware Platform
 <div style="display: flex; justify-content: space-between; align-items: center;">
   <img src="docs/images/kuavo4pro.png" alt="kuavo" style="width:25%; max-width:340px; min-width:180px; margin-right:16px;">
   <img src="docs/images/kuavo_wheel.png" alt="kuavo_wheel" style="width:30%; max-width:340px; min-width:180px;">
 </div>
 
-Above are the main hardware platforms used in our dataset, <strong>Kuavo 4 pro</strong> and <strong>Kuavo 4 pro Wheel Edition   </strong>.
+Above are the main hardware platforms used in our dataset, <strong>Kuavo 4 pro</strong> and <strong>Kuavo 4 pro Wheel Edition</strong>.
 
-- <strong>Robot Parameters</strong>: Height 1.66 m, Weight 55 kg, Support battery replacement without shutting down
-- <strong>Flexible Motion Control</strong>: 40 Degree of Freedom, Maximum walking speed of 7km/h and bipedal autonomous SLAM
-- <strong>High Generalization</strong>: Supporting access to multi-modal large modals such as Pangu, DeepSeek, ChatGPT and etc., with a total of 20+ Atomic skills
+- 📏 <strong>Robot Parameters</strong>: Height 1.66 m, Weight 55 kg, Support battery replacement without shutting down
+- 🎮 <strong>Flexible Motion Control</strong>: 40 Degree of Freedom, Maximum walking speed of 7km/h and bipedal autonomous SLAM
+- 🧠 <strong>High Generalization</strong>: Supporting access to multi-modal large models such as Pangu, DeepSeek, ChatGPT, etc., with a total of 20+ Atomic skills
 
-## Tasks
-(TBD)(GIF)
-## Dataset
+---
 
-### Dataset Directory Structure
-(a tree here)
-#### Verified
-(verified datasets)
+## 🎬 Tasks
+***(TBD)(GIF)@训练场***
+
+---
+
+## 📦 Dataset
+
+### 📁 Dataset Directory Structure
+***(a tree here@行帅)***
+#### ✅ Verified
+***(verified datasets@行帅)***
 
 All of the above datasets have been validated using Diffusion Policy and ACT training, ensuring both usability and reliability for downstream robot learning applications.
-#### In Validation
-(not yet@行帅)
+
+#### 🔄 In Validation
+***(not yet@行帅)***
 
 The datasets listed above are all high-quality and have passed manual review which will be verified by model training and testing in the future.
 
-### Data Format
-All data are in the original rosbag format, with detailed information as follows:
+### 📄 Data Format
 
+All data are in the original **rosbag** format, with detailed information as follows:
+
+> 📌 **Note**: Click on each topic below to expand and view its detailed specifications.
 
 <details open>
 <summary><strong>Rosbag Topic Demonstration</strong></summary>
@@ -261,7 +290,7 @@ All data are in the original rosbag format, with detailed information as follows
 
         - acc: Accelerometer acceleration, in m/s²
 
-        - quat” IMU orientation
+        - quat: IMU orientation
 
 </details>
 
@@ -306,7 +335,7 @@ All data are in the original rosbag format, with detailed information as follows
 <details>
 <summary>Robot positional commands (Simulation Task 4 only)</summary>
 
-- <strong>/cmd_pose_world</strong>  
+- <strong>/cmd_pose_world</strong>
     1. Description
         
         Topic used to publish robot position commands
@@ -330,30 +359,47 @@ All data are in the original rosbag format, with detailed information as follows
 
 </details>
 
-</details open>
+</details>
 
-### Label Format
-(@行帅)
+### 🏷️ Label Format
+***(@行帅)***
 
-## Usage
+---
+
+## 🚀 Usage
+
+> 💡 **Quick Start**: Visit our [repository](https://github.com/LejuRobotics/kuavo_data_challenge) for full documentation and examples.
+
 We provide a comprehensive example repository to demonstrate how to use our dataset, including:
 
-- <strong>A data conversion tool (`rosbag2lerobot`) </strong>to convert raw rosbag files into formats suitable for model training.
-- Implementations and examples for <strong>two imitation learning models</strong>: Diffusion Policy and ACT.
-- <strong>Model training scripts</strong> for training on our dataset.
-- Full code and instructions for <strong>deployment</strong>, both in real-world robot and simulation environments.
+- 🔄 <strong>A data conversion tool (`rosbag2lerobot`)</strong> to convert raw rosbag files into formats suitable for model training.
+- 🤖 Implementations and examples for <strong>two imitation learning models</strong>: Diffusion Policy and ACT.
+- 🎓 <strong>Model training scripts</strong> for training on our dataset.
+- 🚁 Full code and instructions for <strong>deployment</strong>, both in real-world robot and simulation environments.
 
 Please refer to our open-source repository: <strong>[kuavo_data_challenge](https://github.com/LejuRobotics/kuavo_data_challenge)</strong>.
 
 The repository contains documentation, setup instructions, and running examples. We recommend users start from there for dataset preparation, training, and deployment workflows.
 
+---
 
-
-## Stats
+## 📊 Stats
 (TBD)
 
-## License
+---
+
+## 📝 Citation
+If you use this dataset in your research, please cite:
+```
+(TBD)
+```
+
+---
+
+## 📄 License
 (TBD)
 
-## Acknowledgement
+---
+
+## 🙏 Acknowledgement
 (TBD)
